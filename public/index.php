@@ -6,11 +6,12 @@ use app\database\Connection;
 use app\database\models\Book;
 
 $book = new Book;
-$books = $book->getBooks(Connection::getConnection());
 
 if (isset($_GET['s'])) {
   $search = strip_tags($_GET['s']);
   $books = $book->searchBooks(Connection::getConnection(), $search);
+} else {
+  $books = $book->getBooks(Connection::getConnection());
 }
 ?>
 

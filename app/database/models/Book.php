@@ -20,7 +20,7 @@ class Book
   public function searchBooks(PDO $connection, $search)
   {
     try {
-      $prepare = $connection->prepare("select id, title, description from books where title like :search or description like :search");
+      $prepare = $connection->prepare("select id, title, description from books where title like :search");
       $prepare->execute(['search' => '%' . $search . '%']);
       return $prepare->fetchAll();
     } catch (\Throwable $th) {
